@@ -7,6 +7,10 @@ using System.Linq.Expressions;
 
 namespace EATurner.Data.Repository
 {
+    /// <summary>
+    /// Generic Repository for EF 6
+    /// </summary>
+    /// <typeparam name="TEntity">The Entity</typeparam>
     public class GenericRepository<TEntity> where TEntity : class
     {
         readonly DbContext _context;
