@@ -17,24 +17,24 @@ namespace EATurner.Web.Controllers
 {
     public class TitlesController : ApiController
     {
-        private UnitOfWork db = new UnitOfWork();
+        private ITitleRepository _db;
 
-        // GET: api/Titles
-        public IQueryable<Title> GetTitles()
+        public TitlesController(ITitleRepository db)
         {
-            return db.Titles.Where(e => e.TitleName != string.Empty);
+            _db = db;
         }
 
-        // GET: api/Titles/5
-        [ResponseType(typeof(Title))]
-        public async Task<IHttpActionResult> GetTitle(int id)
+        // GET: api/Titles
+        public async Task<IHttpActionResult> GetTitles()
         {
-            var title = db.Titles.GetById(id);
-            if (title == null)
-            {
-                return NotFound();
-            }
-          
+            return Ok(_db.GetAll().ToList());
+        }
+
+        [ResponseType(typeof(Title))]
+        public async Task<IHttpActionResult> GetTitle(string id)
+        {
+            var title = _db.GetByTitle(id).ToList();
+
             return Ok(title);
         }
     }

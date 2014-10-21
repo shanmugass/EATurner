@@ -65,7 +65,7 @@ namespace EATurner.Data.Repository
             return query.Any();
         }
 
-        public virtual IEnumerable<TEntity> Get(
+        public virtual IQueryable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
@@ -84,9 +84,9 @@ namespace EATurner.Data.Repository
             }
 
             if (orderBy != null)
-                return orderBy(query).ToList();
+                return orderBy(query);
 
-            return query.ToList();
+            return query;
         }
 
         public virtual IQueryable<TEntity> Where(
