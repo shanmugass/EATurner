@@ -24,18 +24,19 @@
             <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
                 <thead>
                     <tr>
-                        <th data-ng-click="setOrder('product')">Title Name</th>
-                        <th data-ng-click="setOrder('date')">Release Year</th>
-                        <th data-ng-click="setOrder('quantity')">Processed Time</th>
+                        <th data-ng-click="setOrder('TitleName')">Title Name</th>
+                        <th data-ng-click="setOrder('ReleaseYear')">Release Year</th>
+                        <th data-ng-click="setOrder('ProcessedDateTimeUTC')">Processed Time</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr data-ng-hide="titles.length > 0" class="error">
-                        <td colspan="3">
+                        <td colspan="4">
                             <div class="text-center"><strong>No titles found</strong></div>
                         </td>
                     </tr>
-                    <tr data-ng-repeat="title in titles" class="repeat-animation">
+                    <tr data-ng-repeat="title in titles | orderBy: orderBy" class="repeat-animation">
                         <td>
                             {{ title.TitleName }}
                         </td>
@@ -44,6 +45,9 @@
                         </td>
                         <td>
                             {{ title.ProcessedDateTimeUTC | date:'MM/dd/yyyy' }}
+                        </td>
+                        <td>
+                            <a href="#/viewTitle/{{title.TitleId}}">View</a>
                         </td>
                     </tr>
                 </tbody>

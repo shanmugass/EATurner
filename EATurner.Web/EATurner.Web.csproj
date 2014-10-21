@@ -228,6 +228,7 @@
   <ItemGroup>
     <Content Include="app\EATurnerApp\animations\listAnimations.js" />
     <Content Include="app\EATurnerApp\app.js" />
+    <Content Include="app\EATurnerApp\controllers\viewTitlesController.js" />
     <Content Include="app\EATurnerApp\controllers\titlesController.js" />
     <Content Include="app\EATurnerApp\controllers\aboutController.js" />
     <Content Include="app\EATurnerApp\controllers\loginController.js" />
@@ -235,12 +236,14 @@
     <Content Include="app\EATurnerApp\directives\lazyLoader.js" />
     <Content Include="app\EATurnerApp\directives\wcUnique.js" />
     <Content Include="app\EATurnerApp\partials\modal.html" />
+    <Content Include="app\EATurnerApp\services\dataService.js" />
     <Content Include="app\EATurnerApp\services\titleService.js" />
     <Content Include="app\EATurnerApp\services\authService.js" />
     <Content Include="app\EATurnerApp\services\config.js" />
     <Content Include="app\EATurnerApp\services\httpInterceptors.js" />
     <Content Include="app\EATurnerApp\views\about.html" />
     <Content Include="app\EATurnerApp\views\login.html" />
+    <Content Include="app\EATurnerApp\views\titles\viewTitle.html" />
     <Content Include="app\EATurnerApp\views\titles\titles.html" />
     <Content Include="app\wc.directives\directives\lazyLoader.js" />
     <Content Include="app\wc.directives\directives\menuHighlighter.js" />

@@ -24,7 +24,6 @@ namespace EATurner.Data.Model
 
         public bool IsOnScreen { get; set; }
 
-        [JsonIgnore]
         public virtual Participant Participant { get; set; }
 
 

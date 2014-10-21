@@ -14,6 +14,13 @@
                 });
         };
 
+        factory.getById = function (id) {
+            return $http.get(serviceBase + '/' + id).then(
+                function (results) {
+                    return results.data;
+                });
+        };
+
         factory.getBySearchText = function (searchKey) {
             return $http.get(serviceBase + '/' + searchKey).then(
                 function (results) {

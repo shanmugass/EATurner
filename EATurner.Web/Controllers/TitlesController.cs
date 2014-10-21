@@ -27,15 +27,38 @@ namespace EATurner.Web.Controllers
         // GET: api/Titles
         public async Task<IHttpActionResult> GetTitles()
         {
-            return Ok(_db.GetAll().ToList());
+            return Ok(_db.GetAll().Select(e => new
+                {
+                    e.TitleId,
+                    e.TitleName,
+                    e.ReleaseYear,
+                    e.ProcessedDateTimeUTC
+                }));
         }
 
         [ResponseType(typeof(Title))]
         public async Task<IHttpActionResult> GetTitle(string id)
         {
-            var title = _db.GetByTitle(id).ToList();
+            int titleId = 0;
 
-            return Ok(title);
+            if (int.TryParse(id, out titleId))
+            {
+                var title = _db.GetById(titleId);
+                return Ok(title);
+            }
+            else if (!string.IsNullOrEmpty(id))
+            {
+                var title = _db.GetByTitle(id).Select(e => new
+                {
+                    e.TitleId,
+                    e.TitleName,
+                    e.ReleaseYear,
+                    e.ProcessedDateTimeUTC
+                });
+                return Ok(title);
+            }
+
+            return NotFound();
         }
     }
 }
