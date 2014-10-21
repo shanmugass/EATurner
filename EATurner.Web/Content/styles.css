@@ -166,14 +166,19 @@ footer {
     font-weight: bold;
 }
 
-.customerEdit input[type='text'], 
-.customerEdit input[type='number'],
-.customerEdit input[type='email'],
-.customerEdit select,
+.titleSearchForm input[type='text'], 
+.titleSearchForm input[type='number'],
+.titleSearchForm input[type='email'],
+.titleSearchForm select,
 .login input[type='text'], 
 .login input[type='email'],
 .login input[type='password'] {
     width:250px;
+}
+
+.titleSearchForm
+{
+    margin-bottom:15px;
 }
 
 .statusRow {

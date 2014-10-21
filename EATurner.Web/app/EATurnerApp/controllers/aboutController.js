@@ -2,12 +2,12 @@
 
     var injectParams = ['$scope'];
 
-    var AboutController = function ($scope) {
+    var aboutController = function ($scope) {
 
     };
 
-    AboutController.$inject = injectParams;
+    aboutController.$inject = injectParams;
 
-    angular.module('EATurnerApp').controller('AboutController', AboutController);
+    angular.module('EATurnerApp').controller('aboutController', aboutController);
 
 }());

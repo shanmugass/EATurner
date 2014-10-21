@@ -1,18 +1,18 @@
 ﻿(function () {
 
     var app = angular.module('EATurnerApp',
-        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular']);
+        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap']);
 
     app.config(['$routeProvider', function ($routeProvider) {
         var viewBase = '/app/EATurnerApp/views/';
 
         $routeProvider
             .when('/titles', {
-                controller: 'TitlesController',
+                controller: 'titlesController',
                 templateUrl: viewBase + 'titles/titles.html'
             })
             .when('/about', {
-                controller: 'AboutController',
+                controller: 'aboutController',
                 templateUrl: viewBase + 'about.html'
             })
             .otherwise({ redirectTo: '/titles' });

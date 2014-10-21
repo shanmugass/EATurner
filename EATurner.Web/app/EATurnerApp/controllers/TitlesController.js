@@ -1,13 +1,27 @@
 ﻿(function () {
 
-    var injectParams = ['$scope'];
+    var injectParams = ['$scope', 'titleService'];
 
-    var TitlesController = function ($scope) {
+    var titlesController = function ($scope, titleService) {
 
+        init();
+
+        function init() {
+            $scope.titles = [];
+        }
+
+        $scope.searchTitles = function () {
+            if ($scope.titleSearchForm.$error.required == null) {
+                titleService.getBySearchText($scope.txtSearch)
+                .then(function (data) {
+                    $scope.titles = data;
+                });
+            }
+        }
     };
 
-    TitlesController.$inject = injectParams;
+    titlesController.$inject = injectParams;
 
-    angular.module('EATurnerApp').controller('TitlesController', TitlesController);
+    angular.module('EATurnerApp').controller('titlesController', titlesController);
 
 }());

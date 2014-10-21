@@ -1,10 +1,55 @@
 ﻿<div class="view">
-    <div class="container">
-        <header>
-            <h3><span class="glyphicon glyphicon-info-sign"></span>EATurner Title Search</h3>
-        </header>
-        <br />     
+    <div class="container" data-ng-controller="titlesController">
+        <form name="titleSearchForm">
+            <header>
+                <h3><span class="glyphicon glyphicon-info-sign"></span>EATurner Title Search</h3>
+            </header>
+            <br />
+            <div class="titleSearchForm">
+                <div class="row">
+                    <div class="col-md-1">
+                        Title:
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="txtSearch" class="form-control" data-ng-model="txtSearch" required />
+                        <span class="errorMessage" ng-show="titleSearchForm.txtSearch.$touched && titleSearchForm.txtSearch.$invalid">
+                            Title is required
+                        </span>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary" data-ng-click="searchTitles()" ng-disabled="titleSearchForm.$invalid || !titleSearchForm.$dirty">Search</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+                <thead>
+                    <tr>
+                        <th data-ng-click="setOrder('product')">Title Name</th>
+                        <th data-ng-click="setOrder('date')">Release Year</th>
+                        <th data-ng-click="setOrder('quantity')">Processed Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-hide="titles.length > 0" class="error">
+                        <td colspan="3">
+                            <div class="text-center"><strong>No titles found</strong></div>
+                        </td>
+                    </tr>
+                    <tr data-ng-repeat="title in titles" class="repeat-animation">
+                        <td>
+                            {{ title.TitleName }}
+                        </td>
+                        <td>
+                            {{ title.ReleaseYear }}
+                        </td>
+                        <td>
+                            {{ title.ProcessedDateTimeUTC | date:'MM/dd/yyyy' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
     </div>
 </div>
-
 

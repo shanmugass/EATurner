@@ -228,22 +228,17 @@
   <ItemGroup>
     <Content Include="app\EATurnerApp\animations\listAnimations.js" />
     <Content Include="app\EATurnerApp\app.js" />
-    <Content Include="app\EATurnerApp\controllers\TitlesController.js" />
+    <Content Include="app\EATurnerApp\controllers\titlesController.js" />
     <Content Include="app\EATurnerApp\controllers\aboutController.js" />
     <Content Include="app\EATurnerApp\controllers\loginController.js" />
     <Content Include="app\EATurnerApp\controllers\navbarController.js" />
     <Content Include="app\EATurnerApp\directives\lazyLoader.js" />
     <Content Include="app\EATurnerApp\directives\wcUnique.js" />
-    <Content Include="app\EATurnerApp\filters\nameCityStateFilter.js" />
-    <Content Include="app\EATurnerApp\filters\nameProductFilter.js" />
     <Content Include="app\EATurnerApp\partials\modal.html" />
+    <Content Include="app\EATurnerApp\services\titleService.js" />
     <Content Include="app\EATurnerApp\services\authService.js" />
     <Content Include="app\EATurnerApp\services\config.js" />
-    <Content Include="app\EATurnerApp\services\customersBreezeService.js" />
-    <Content Include="app\EATurnerApp\services\customersService.js" />
-    <Content Include="app\EATurnerApp\services\dataService.js" />
     <Content Include="app\EATurnerApp\services\httpInterceptors.js" />
-    <Content Include="app\EATurnerApp\services\modalService.js" />
     <Content Include="app\EATurnerApp\views\about.html" />
     <Content Include="app\EATurnerApp\views\login.html" />
     <Content Include="app\EATurnerApp\views\titles\titles.html" />
@@ -255,6 +250,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.icon-large.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\spinner.gif" />
     <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
