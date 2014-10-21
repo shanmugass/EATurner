@@ -49,6 +49,7 @@ namespace EATurner.Web.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                //Custom Kernal Mapping
                 kernel.Bind<ITitleRepository>().To<TitleRepository>();
                 GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
                 return kernel;

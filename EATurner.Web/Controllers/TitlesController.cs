@@ -15,16 +15,27 @@ using System.Web;
 
 namespace EATurner.Web.Controllers
 {
+    /// <summary>
+    /// Titles Web API Controller
+    /// </summary>
     public class TitlesController : ApiController
     {
         private ITitleRepository _db;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TitlesController"/> class.
+        /// </summary>
+        /// <param name="db">The database.</param>
         public TitlesController(ITitleRepository db)
         {
             _db = db;
         }
 
         // GET: api/Titles
+        /// <summary>
+        /// Gets the titles.
+        /// </summary>
+        /// <returns>Return Title</returns>
         public IHttpActionResult GetTitles()
         {
             return Ok(_db.GetAll().Select(e => new
@@ -36,17 +47,18 @@ namespace EATurner.Web.Controllers
                 }));
         }
 
+        /// <summary>
+        /// Gets the title.
+        /// </summary>
+        /// <param name="id">Gets the Title by Given Id.</param>
+        /// <param name="isTextSearch">Set true if it is text search otherwise false.</param>
+        /// <returns></returns>
         [ResponseType(typeof(Title))]
-        public IHttpActionResult GetTitle(string id)
+        public IHttpActionResult GetTitle(string id, bool isTextSearch)
         {
             int titleId = 0;
 
-            if (int.TryParse(id, out titleId))
-            {
-                var title = _db.GetById(titleId);
-                return Ok(title);
-            }
-            else if (!string.IsNullOrEmpty(id))
+            if (!string.IsNullOrEmpty(id) && isTextSearch)
             {
                 var title = _db.GetByTitle(id).Select(e => new
                 {
@@ -55,6 +67,11 @@ namespace EATurner.Web.Controllers
                     e.ReleaseYear,
                     e.ProcessedDateTimeUTC
                 });
+                return Ok(title);
+            }
+            else if (int.TryParse(id, out titleId))
+            {
+                var title = _db.GetById(titleId);
                 return Ok(title);
             }
 

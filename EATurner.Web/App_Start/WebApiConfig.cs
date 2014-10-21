@@ -11,6 +11,10 @@ namespace EATurner.Web
 {
     public static class WebApiConfig
     {
+        /// <summary>
+        /// Registers WEB API routes
+        /// </summary>
+        /// <param name="config">The configuration.</param>
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
@@ -28,12 +32,6 @@ namespace EATurner.Web
             );
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
-
-
-            //var xml = config.Formatters.XmlFormatter;
-            //xml.se.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
-
-           // config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }

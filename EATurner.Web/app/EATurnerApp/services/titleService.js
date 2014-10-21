@@ -15,14 +15,14 @@
         };
 
         factory.getById = function (id) {
-            return $http.get(serviceBase + '/' + id).then(
+            return $http.get(serviceBase + '/' + id + "?isTextSearch=false").then(
                 function (results) {
                     return results.data;
                 });
         };
 
         factory.getBySearchText = function (searchKey) {
-            return $http.get(serviceBase + '/' + searchKey).then(
+            return $http.get(serviceBase + '/' + searchKey + "?isTextSearch=true").then(
                 function (results) {
                     return results.data;
                 });
