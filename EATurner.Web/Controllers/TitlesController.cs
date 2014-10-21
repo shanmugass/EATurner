@@ -25,7 +25,7 @@ namespace EATurner.Web.Controllers
         }
 
         // GET: api/Titles
-        public async Task<IHttpActionResult> GetTitles()
+        public IHttpActionResult GetTitles()
         {
             return Ok(_db.GetAll().Select(e => new
                 {
@@ -37,7 +37,7 @@ namespace EATurner.Web.Controllers
         }
 
         [ResponseType(typeof(Title))]
-        public async Task<IHttpActionResult> GetTitle(string id)
+        public IHttpActionResult GetTitle(string id)
         {
             int titleId = 0;
 
