@@ -6,10 +6,9 @@
 <head>
     <title>EA Turner Developer Challange</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/animations.css" rel="stylesheet" />
-    <link href="Content/styles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/bootstrap")" rel="stylesheet" />
+
 </head>
 <body data-ng-cloak="">
     <header class="navbar navbar-inner navbar-fixed-top" data-ng-controller="NavbarController">
@@ -60,26 +59,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-animate.min.js"></script>
     <script src="Scripts/angular-ui-bootstrap.js"></script>
-    <script src="Scripts/tweenMax.min.js"></script>
-
-    <!-- To use breeze change the app/EATurnerApp/services/config.js useBreeze property to true -->
-    <script src="Scripts/breeze.min.js"></script>
-    <script src="Scripts/breeze.angular.js"></script>
-    <!-- Custom scripts -->
-    <script src="app/wc.directives/directives/wcOverlay.js"></script>
-    <script src="app/wc.directives/directives/menuHighlighter.js"></script>
-    <script src="app/EATurnerApp/app.js"></script>
-    <script src="app/EATurnerApp/animations/listAnimations.js"></script>
-    <script src="app/EATurnerApp/directives/wcUnique.js"></script>
-    <script src="app/EATurnerApp/services/config.js"></script>
-    <script src="app/EATurnerApp/services/dataService.js"></script>
-    <script src="app/EATurnerApp/services/authService.js"></script>
-    <script src="app/EATurnerApp/services/httpInterceptors.js"></script>
-    <script src="app/EATurnerApp/services/titleService.js"></script>
-    <script src="app/EATurnerApp/controllers/aboutController.js"></script>
-    <script src="app/EATurnerApp/controllers/navbarController.js"></script>
-    <script src="app/EATurnerApp/controllers/loginController.js"></script>
-    <script src="app/EATurnerApp/controllers/TitlesController.js"></script>
-    <script src="app/EATurnerApp/controllers/viewTitlesController.js"></script>
+    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/angularjs")"></script>
+   
 </body>
 </html>

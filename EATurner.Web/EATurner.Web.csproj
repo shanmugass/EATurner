@@ -237,7 +237,6 @@
     <Content Include="app\EATurnerApp\directives\lazyLoader.js" />
     <Content Include="app\EATurnerApp\directives\wcUnique.js" />
     <Content Include="app\EATurnerApp\partials\modal.html" />
-    <Content Include="app\EATurnerApp\services\dataService.js" />
     <Content Include="app\EATurnerApp\services\titleService.js" />
     <Content Include="app\EATurnerApp\services\authService.js" />
     <Content Include="app\EATurnerApp\services\config.js" />
