@@ -1,5 +1,5 @@
 ﻿<div class="view">
-    <div class="container" data-ng-controller="titlesController">
+    <div class="container">
         <form name="titleSearchForm">
             <header>
                 <h3>EA Turner Developer Challange</h3>
@@ -10,8 +10,8 @@
                     <div class="col-md-1">
                         Title:
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" name="txtSearch" class="form-control" data-ng-model="txtSearch" required />
+                    <div class="col-md-4">                        
+                        <input type="text" data-ng-model="txtSearch" autocomplete="off" ng-options="tname for tname in titleNames" placeholder="Enter Title" class="form-control" required bs-typeahead />
                         <span class="errorMessage" ng-show="titleSearchForm.txtSearch.$touched && titleSearchForm.txtSearch.$invalid">
                             Title is required
                         </span>
@@ -26,7 +26,7 @@
                     <tr>
                         <th data-ng-click="setOrder('TitleName')">Title Name</th>
                         <th data-ng-click="setOrder('ReleaseYear')">Release Year</th>
-                        <th data-ng-click="setOrder('ProcessedDateTimeUTC')">Processed Time</th>
+                        <th>Genre</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -44,7 +44,7 @@
                             {{ title.ReleaseYear }}
                         </td>
                         <td>
-                            {{ title.ProcessedDateTimeUTC | date:'MM/dd/yyyy' }}
+                            <span data-ng-repeat="titleGenre in title.TitleGenres">{{titleGenre.Genre.Name}}<span ng-show=" ! $last ">, </span></span>
                         </td>
                         <td>
                             <a href="#/viewTitle/{{title.TitleId}}">View</a>

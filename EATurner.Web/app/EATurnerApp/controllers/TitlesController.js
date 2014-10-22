@@ -7,9 +7,16 @@
         init();
 
         $scope.orderBy = 'TitleName';
+        $scope.txtSearch = '';       
 
         function init() {
             $scope.titles = [];
+            $scope.titleNames = [];
+            titleService.getAll()
+            .then(function (data) {
+                $scope.titleNames = data;
+            });
+
         }
 
         $scope.setOrder = function (orderColumn) {

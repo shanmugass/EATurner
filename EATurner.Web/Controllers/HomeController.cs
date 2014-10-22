@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EATurner.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,13 @@ namespace EATurner.Web.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View();
+            var model = new HomePageModel();
+
+#if(DEBUG)
+            model.IsDebugMode = true;
+#endif
+
+            return View(model);
         }
     }
 }

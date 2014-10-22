@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EATurner.Web.Models.HomePageModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -6,7 +7,7 @@
 <head>
     <title>EA Turner Developer Challange</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/bootstrap")" rel="stylesheet" />
 
 </head>
@@ -55,11 +56,34 @@
         <br /><img src="Content/images/spinner.gif" />&nbsp;&nbsp;Loading
     </div>
     <!-- 3rd party libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-animate.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script>
     <script src="Scripts/angular-ui-bootstrap.js"></script>
-    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/angularjs")"></script>
-   
+
+    @if (!Model.IsDebugMode)
+    {
+        <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/angularjs")"></script>
+    }
+    else
+    {
+        <script src="app/wc.directives/directives/wcOverlay.js"></script>
+        <script src="app/wc.directives/directives/menuHighlighter.js"></script>
+        <script src="app/EATurnerApp/app.js"></script>
+        <script src="app/EATurnerApp/animations/listAnimations.js"></script>
+        <script src="app/EATurnerApp/directives/wcUnique.js"></script>
+        <script src="app/EATurnerApp/services/config.js"></script>
+        <script src="app/EATurnerApp/services/dataService.js"></script>
+        <script src="app/EATurnerApp/services/authService.js"></script>
+        <script src="app/EATurnerApp/services/httpInterceptors.js"></script>
+        <script src="app/EATurnerApp/services/titleService.js"></script>
+        <script src="app/EATurnerApp/controllers/aboutController.js"></script>
+        <script src="app/EATurnerApp/controllers/navbarController.js"></script>
+        <script src="app/EATurnerApp/controllers/loginController.js"></script>
+        <script src="app/EATurnerApp/controllers/TitlesController.js"></script>
+        <script src="app/EATurnerApp/controllers/viewTitlesController.js"></script>
+    }
 </body>
 </html>

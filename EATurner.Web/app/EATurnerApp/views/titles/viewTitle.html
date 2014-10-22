@@ -1,124 +1,121 @@
 ﻿<div class="view">
-    <div class="container" data-ng-controller="viewTitlesController">
+    <div class="container">
         <form name="titleSearchForm">
             <div>
                 <header>
                     <h3>Title: {{title.TitleName}}</h3>
                 </header>
             </div>
-
-
-            <table class="table table-hover table-bordered">
-                <tr>
-                    <th>Title</th>
-                    <td>{{title.TitleName}}</td>
-                </tr>
-                <tr>
-                    <th>Release Year</th>
-                    <td>{{ title.ReleaseYear }}</td>
-                </tr>
-                <tr>
-                    <th>Processed Date</th>
-                    <td>{{ title.ProcessedDateTimeUTC | date:'MM/dd/yyyy' }}</td>
-                </tr>
-                <tr>
-                    <th>
-                        Other Names
-                    </th>
-                    <td>
-                        <span data-ng-repeat="otherName in title.OtherNames">{{otherName.TitleName}}<span ng-show=" ! $last ">, </span></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Genre
-                    </th>
-                    <td>
-                        <span data-ng-repeat="titleGenre in title.TitleGenres">{{titleGenre.Genre.Name}}<span ng-show=" ! $last ">, </span></span>
-                    </td>
-                </tr>
-            </table>
-            <h4>Story</h4>
-            <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
-                <thead>
+            <div class="col-lg-6">
+                <h4>{{title.TitleName}}</h4>
+                <table class="table table-hover table-bordered">                   
                     <tr>
-                        <th>Type</th>
-                        <th>Language</th>
-                        <th>Story</th>
+                        <th>Release Year</th>
+                        <td>{{ title.ReleaseYear }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr data-ng-hide="title.StoryLines.length > 0" class="error">
-                        <td colspan="2">
-                            <div class="text-center"><strong>No Story</strong></div>
-                        </td>
-                    </tr>
-                    <tr data-ng-repeat="story in title.StoryLines | orderBy: Id" class="repeat-animation">
+                    <tr>
+                        <th>
+                            Other Names
+                        </th>
                         <td>
-                            {{ story.Type }}
-                        </td>
-                        <td>
-                            {{ story.Language }}
-                        </td>
-                        <td>
-                            {{ story.Description }}
+                            <span data-ng-repeat="otherName in title.OtherNames">{{otherName.TitleName}}<span ng-show=" ! $last ">, </span></span>
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                    <tr>
+                        <th>
+                            Genre
+                        </th>
+                        <td>
+                            <span data-ng-repeat="titleGenre in title.TitleGenres">{{titleGenre.Genre.Name}}<span ng-show=" ! $last ">, </span></span>
+                        </td>
+                    </tr>
+                </table>
+                <h4>Award</h4>
+                <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Award Year</th>
+                            <th>Award</th>
+                            <th>Award Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-hide="title.Awards.length > 0" class="error">
+                            <td colspan="3">
+                                <div class="text-center"><strong>No Awards</strong></div>
+                            </td>
+                        </tr>
+                        <tr data-ng-repeat="award in title.Awards | orderBy: Id | filter:!participant.AwardWon" class="repeat-animation">
+                            <td>
+                                {{ award.AwardYear }}
+                            </td>
+                            <td>
+                                {{ award.AwardName }}
+                            </td>
+                            <td>
+                                {{ award.AwardCompany }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <h4>Participant</h4>
+                <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-hide="title.TitleParticipants.length > 0" class="error">
+                            <td colspan="2">
+                                <div class="text-center"><strong>No Participants</strong></div>
+                            </td>
+                        </tr>
+                        <tr data-ng-repeat="participant in title.TitleParticipants | orderBy: Id | filter:!participant.IsOnScreen" class="repeat-animation">
+                            <td>
+                                {{ participant.RoleType }}
+                            </td>
+                            <td>
+                                {{ participant.Participant.Name }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h4>Participant</h4>
-            <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
-                <thead>
-                    <tr>
-                        <th>Role</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-ng-hide="title.TitleParticipants.length > 0" class="error">
-                        <td colspan="2">
-                            <div class="text-center"><strong>No Participants</strong></div>
-                        </td>
-                    </tr>
-                    <tr data-ng-repeat="participant in title.TitleParticipants | orderBy: Id | filter:!participant.IsOnScreen" class="repeat-animation">
-                        <td>
-                            {{ participant.RoleType }}
-                        </td>
-                        <td>
-                            {{ participant.Participant.Name }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <h4>Award</h4>
-            <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
-                <thead>
-                    <tr>
-                        <th>Award Year</th>
-                        <th>Award</th>
-                        <th>Award Company</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-ng-hide="title.Awards.length > 0" class="error">
-                        <td colspan="3">
-                            <div class="text-center"><strong>No Awards</strong></div>
-                        </td>
-                    </tr>
-                    <tr data-ng-repeat="award in title.Awards | orderBy: Id | filter:!participant.AwardWon" class="repeat-animation">
-                        <td>
-                            {{ award.AwardYear }}
-                        </td>
-                        <td>
-                            {{ award.AwardName }}
-                        </td>
-                        <td>
-                            {{ award.AwardCompany }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-lg-12">
+                <h4>Story</h4>
+                <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Language</th>
+                            <th>Story</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-hide="title.StoryLines.length > 0" class="error">
+                            <td colspan="2">
+                                <div class="text-center"><strong>No Story</strong></div>
+                            </td>
+                        </tr>
+                        <tr data-ng-repeat="story in title.StoryLines | orderBy: Id" class="repeat-animation">
+                            <td>
+                                {{ story.Type }}
+                            </td>
+                            <td>
+                                {{ story.Language }}
+                            </td>
+                            <td>
+                                {{ story.Description }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </form>
     </div>
 </div>

@@ -38,13 +38,7 @@ namespace EATurner.Web.Controllers
         /// <returns>Return Title</returns>
         public IHttpActionResult GetTitles()
         {
-            return Ok(_db.GetAll().Select(e => new
-                {
-                    e.TitleId,
-                    e.TitleName,
-                    e.ReleaseYear,
-                    e.ProcessedDateTimeUTC
-                }));
+            return Ok(_db.GetAll().Select(e => e.TitleName));
         }
 
         /// <summary>
@@ -65,7 +59,8 @@ namespace EATurner.Web.Controllers
                     e.TitleId,
                     e.TitleName,
                     e.ReleaseYear,
-                    e.ProcessedDateTimeUTC
+                    e.ProcessedDateTimeUTC,
+                    e.TitleGenres
                 });
                 return Ok(title);
             }
